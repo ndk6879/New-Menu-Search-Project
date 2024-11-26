@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu Search</title>
+</head>
+<body>
+    <h1>Menu Search</h1>
+    <input id="search" placeholder="Enter a menu name" />
+    <button onclick="searchMenu()">Search</button>
+    <div id="results"></div>
+
+    <script>
+        async function searchMenu() {
+            const query = document.getElementById("search").value;
+            const response = await fetch(`/api/menus?query=${query}`);
+            const data = await response.json();
+
+            const results = document.getElementById("results");
+            results.innerHTML = "";
+            data.forEach(menu => {
+                results.innerHTML += `<p>${menu.name} - $${menu.price}</p>`;
+            });
+        }
+    </script>
+</body>
+</html>
