@@ -1,0 +1,6 @@
+# MacOS-specific files
+.DS_Store
+
+# Go-related files
+*.sum
+*.mod
